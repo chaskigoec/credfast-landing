@@ -224,11 +224,12 @@
     }
     .fundador-bio p { font-size: 16px; line-height: 1.85; color: var(--light); text-align: justify; hyphens: auto; }
     .fundador-bio p + p { margin-top: 22px; }
-    .fundador-creds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 36px; }
+    .fundador-creds { display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 36px; overflow-x: auto; }
     .cred-tag {
       font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--gray);
       border: 1px solid var(--border2); padding: 6px 14px;
+      white-space: nowrap;
     }
 
     /* ── CTA FINAL ───────────────────────────── */
@@ -426,7 +427,7 @@
           <div class="valor-item">
             <span class="valor-num">02</span>
             <h3 class="valor-title">Transparencia</h3>
-            <p class="valor-desc">Condiciones claras desde el primer contacto. Sin letra pequeña, sin sorpresas en el camino.</p>
+            <p class="valor-desc">Condiciones claras desde el primer contacto. Sin letras pequeñas, sin sorpresas en el camino.</p>
           </div>
           <div class="valor-item">
             <span class="valor-num">03</span>
@@ -485,7 +486,9 @@
             <div class="fundador-creds">
               <span class="cred-tag">UEES</span>
               <span class="cred-tag">Tec. de Monterrey</span>
-              <span class="cred-tag">IDE / IPADE / FIU</span>
+              <span class="cred-tag">IDE</span>
+              <span class="cred-tag">IPADE</span>
+              <span class="cred-tag">FIU</span>
               <span class="cred-tag">IMF Madrid</span>
               <span class="cred-tag">+25 Años en banca</span>
             </div>
