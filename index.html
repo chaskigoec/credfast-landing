@@ -658,10 +658,48 @@
       50%       { opacity: 1;   transform: scaleY(1.15); }
     }
 
+    /* ── HAMBURGUESA ──────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px; z-index: 101;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--white); transition: all 0.3s;
+    }
+    .nav-hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: var(--black); flex-direction: column; justify-content: center;
+      padding: 0 40px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(36px, 10vw, 52px); font-weight: 800;
+      letter-spacing: -0.02em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+      border-bottom: 1px solid var(--border); padding: 20px 0;
+      transition: color 0.2s;
+    }
+    .nav-mobile-link:first-child { border-top: 1px solid var(--border); }
+    .nav-mobile-link:hover { color: var(--gray); }
+    .nav-mobile-cta {
+      margin-top: 36px; align-self: flex-start;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--white); text-decoration: none;
+      border: 1px solid var(--white); padding: 12px 28px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-mobile-cta:hover { background: var(--white); color: var(--black); }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       nav { padding: 18px 24px; }
-      .nav-link { display: none; }
+      .nav-right { display: none; }
+      .nav-hamburger { display: flex; }
       section { padding: 80px 24px; }
 
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -700,6 +738,16 @@
       <a href="#servicio" class="nav-link">Servicio</a>
       <a href="#proceso" class="nav-link">Proceso</a>
       <a href="mailto:info@credfast.ec" class="nav-cta">Contacto</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html" class="nav-mobile-link">Inicio</a>
+      <a href="nosotros.html" class="nav-mobile-link">Quiénes somos</a>
+      <a href="#servicio" class="nav-mobile-link">Servicio</a>
+      <a href="#proceso" class="nav-mobile-link">Proceso</a>
+      <a href="mailto:info@credfast.ec" class="nav-mobile-cta">Contacto →</a>
     </div>
   </nav>
 
@@ -963,6 +1011,22 @@
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('nav-hamburger');
+    const navMobile = document.getElementById('nav-mobile');
+    hamburger.addEventListener('click', () => {
+      const open = navMobile.classList.toggle('open');
+      hamburger.classList.toggle('active');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    navMobile.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navMobile.classList.remove('open');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
 
     // Scroll-reveal
     const observer = new IntersectionObserver((entries) => {

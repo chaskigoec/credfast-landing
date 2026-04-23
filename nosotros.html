@@ -280,10 +280,49 @@
       .mv-grid { grid-template-columns: 1fr; }
       .mv-card + .mv-card { border-left: 1px solid var(--border); border-top: none; }
       .fundador-grid { grid-template-columns: 1fr; gap: 40px; }
-      .fundador-photo-wrap { position: static; max-width: 260px; }
+      .fundador-photo-wrap { position: static; max-width: 260px; margin: 0 auto; }
     }
+    /* ── HAMBURGUESA ──────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px; z-index: 101;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--white); transition: all 0.3s;
+    }
+    .nav-hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: var(--black); flex-direction: column; justify-content: center;
+      padding: 0 40px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(36px, 10vw, 52px); font-weight: 800;
+      letter-spacing: -0.02em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+      border-bottom: 1px solid var(--border); padding: 20px 0;
+      transition: color 0.2s;
+    }
+    .nav-mobile-link:first-child { border-top: 1px solid var(--border); }
+    .nav-mobile-link:hover, .nav-mobile-link.active { color: var(--gray); }
+    .nav-mobile-cta {
+      margin-top: 36px; align-self: flex-start;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--white); text-decoration: none;
+      border: 1px solid var(--white); padding: 12px 28px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-mobile-cta:hover { background: var(--white); color: var(--black); }
+
     @media (max-width: 768px) {
       nav { padding: 18px 24px; }
+      .nav-right { display: none; }
+      .nav-hamburger { display: flex; }
       .container { padding: 0 24px; }
       .nos-hero { min-height: 80vh; padding-bottom: 56px; }
       .nos-section { padding: 64px 0; }
@@ -312,6 +351,16 @@
       <a href="index.html#servicio" class="nav-link">Servicio</a>
       <a href="index.html#proceso" class="nav-link">Proceso</a>
       <a href="mailto:info@credfast.ec" class="nav-cta">Contacto</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html" class="nav-mobile-link">Inicio</a>
+      <a href="nosotros.html" class="nav-mobile-link active">Quiénes somos</a>
+      <a href="index.html#servicio" class="nav-mobile-link">Servicio</a>
+      <a href="index.html#proceso" class="nav-mobile-link">Proceso</a>
+      <a href="mailto:info@credfast.ec" class="nav-mobile-cta">Contacto →</a>
     </div>
   </nav>
 
@@ -475,6 +524,21 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
+
+    const hamburger = document.getElementById('nav-hamburger');
+    const navMobile = document.getElementById('nav-mobile');
+    hamburger.addEventListener('click', () => {
+      const open = navMobile.classList.toggle('open');
+      hamburger.classList.toggle('active');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    navMobile.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navMobile.classList.remove('open');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
   </script>
 
   <script>
