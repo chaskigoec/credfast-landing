@@ -661,7 +661,7 @@
     /* ── HAMBURGUESA ──────────────────────────── */
     .nav-hamburger {
       display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 4px; z-index: 101;
+      background: none; border: none; cursor: pointer; padding: 4px; z-index: 200;
     }
     .nav-hamburger span {
       display: block; width: 22px; height: 1.5px;
@@ -671,7 +671,7 @@
     .nav-hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
     .nav-mobile {
-      display: none; position: fixed; inset: 0; z-index: 99;
+      display: none; position: fixed; inset: 0; z-index: 150;
       background: var(--black); flex-direction: column; justify-content: center;
       padding: 0 40px;
     }
@@ -739,17 +739,17 @@
       <a href="#proceso" class="nav-link">Proceso</a>
       <a href="mailto:info@credfast.ec" class="nav-cta">Contacto</a>
     </div>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-mobile" id="nav-mobile">
-      <a href="index.html" class="nav-mobile-link">Inicio</a>
-      <a href="nosotros.html" class="nav-mobile-link">Quiénes somos</a>
-      <a href="#servicio" class="nav-mobile-link">Servicio</a>
-      <a href="#proceso" class="nav-mobile-link">Proceso</a>
-      <a href="mailto:info@credfast.ec" class="nav-mobile-cta">Contacto →</a>
-    </div>
   </nav>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html" class="nav-mobile-link">Inicio</a>
+    <a href="nosotros.html" class="nav-mobile-link">Quiénes somos</a>
+    <a href="#servicio" class="nav-mobile-link">Servicio</a>
+    <a href="#proceso" class="nav-mobile-link">Proceso</a>
+    <a href="mailto:info@credfast.ec" class="nav-mobile-cta">Contacto →</a>
+  </div>
 
   <main>
   <!-- ═══ HERO ═══════════════════════════════════════════════ -->
