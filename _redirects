@@ -1,0 +1,11 @@
+# ─────────────────────────────────────────────────────────────────
+#  CREDFAST — Regla de página en construcción
+#
+#  Para ACTIVAR la página en construcción:
+#    Quitar el # de la línea de abajo y hacer git push
+#
+#  Para DESACTIVAR (volver al sitio normal):
+#    Volver a poner el # y hacer git push
+# ─────────────────────────────────────────────────────────────────
+
+/* /coming-soon.html 200
