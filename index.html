@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Preload hero image para mejorar LCP -->
-  <link rel="preload" as="image" href="img/photo-1503376780353-7e6692767b70.webp" type="image/webp" />
+  <link rel="preload" as="image" href="img/photo-1503376780353-7e6692767b70.webp" type="image/webp" fetchpriority="high" />
   <!-- Fuentes cargadas de forma no bloqueante -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,600;1,700;1,800&family=Inter:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,600;1,700;1,800&family=Inter:wght@300;400;500;600&display=swap" /></noscript>
@@ -32,12 +32,16 @@
       padding: 130px 40px 100px;
       position: relative; overflow: hidden; isolation: isolate;
     }
-    .hero-bg {
+    .hero-bg-img {
       position: absolute; inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(8,8,8,0.78) 0%, rgba(8,8,8,0.60) 40%, rgba(8,8,8,0.88) 75%, var(--black) 100%),
-        url('img/photo-1503376780353-7e6692767b70.webp') center / cover no-repeat;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
       filter: grayscale(100%); z-index: -1;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(8,8,8,0.78) 0%, rgba(8,8,8,0.60) 40%, rgba(8,8,8,0.88) 75%, var(--black) 100%);
+      z-index: -1; pointer-events: none;
     }
     .hero::before {
       content: ''; position: absolute; inset: 0;
@@ -163,7 +167,7 @@
   <!-- ═══ NAV ═══════════════════════════════════════════════ -->
   <nav id="navbar">
     <a href="index.html" class="nav-logo">
-      <img class="logo-img" src="img/logo-wordmark.png" width="1186" height="270" alt="CREDFAST" />
+      <img class="logo-img" src="img/logo-wordmark.webp" width="1186" height="270" alt="CREDFAST" />
     </a>
     <div class="nav-right">
       <div class="nav-dropdown-wrap">
@@ -191,11 +195,14 @@
   <main id="main-content">
   <!-- ═══ HERO ═══════════════════════════════════════════════ -->
   <section class="hero">
-    <div class="hero-bg"></div>
-    <!-- Ícono (tres barras) con fix de fondo blanco -->
-    <img class="hero-icon logo-img" src="img/logo-icon.png" width="146" height="142" alt="" aria-hidden="true" />
+    <img class="hero-bg-img" src="img/photo-1503376780353-7e6692767b70.webp"
+         alt="" aria-hidden="true" fetchpriority="high" decoding="sync"
+         width="1920" height="1280" />
+    <div class="hero-overlay"></div>
+    <!-- Ícono (tres barras) -->
+    <img class="hero-icon logo-img" src="img/logo-icon.webp" width="146" height="142" alt="" aria-hidden="true" />
     <!-- Wordmark -->
-    <img class="hero-logo logo-img" src="img/logo-wordmark.png" width="1186" height="270" alt="CREDFAST" />
+    <img class="hero-logo logo-img" src="img/logo-wordmark.webp" width="1186" height="270" alt="CREDFAST" fetchpriority="high" />
     <p class="hero-tagline">Tu auto, punto.</p>
     <a href="#nosotros" class="hero-btn">
       Explorar
@@ -435,7 +442,7 @@
   <!-- ═══ FOOTER ═════════════════════════════════════════════ -->
   <footer>
     <div class="footer-logo">
-      <img class="logo-img" src="img/logo-wordmark.png" width="1186" height="270" alt="CREDFAST" />
+      <img class="logo-img" src="img/logo-wordmark.webp" width="1186" height="270" alt="CREDFAST" />
     </div>
     <p class="footer-text">© 2026 CREDFAST S.A. · Samborondón, Ecuador</p>
     <a href="mailto:info@credfast.ec" class="footer-right">info@credfast.ec</a>
