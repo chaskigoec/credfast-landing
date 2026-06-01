@@ -70,7 +70,7 @@
       line-height: 0.95; letter-spacing: -0.02em; text-transform: uppercase;
       color: var(--white); margin-bottom: 28px;
     }
-    .empresa-body { font-size: 16px; line-height: 1.8; color: var(--light); text-align: justify; hyphens: auto; }
+    .empresa-body { font-size: 16px; line-height: 1.8; color: var(--light); text-align: justify; hyphens: none; -webkit-hyphens: none; overflow-wrap: break-word; word-break: normal; }
     .empresa-photo { margin-top: 56px; overflow: hidden; position: relative; }
     .empresa-photo img {
       width: 100%; height: 480px; object-fit: cover; object-position: center calc(30% - 40px);
@@ -124,7 +124,7 @@
       line-height: 0.95; letter-spacing: -0.02em; text-transform: uppercase;
       color: var(--white); margin-bottom: 24px;
     }
-    .mv-card-body { font-size: 15px; line-height: 1.8; color: var(--light); text-align: justify; hyphens: auto; }
+    .mv-card-body { font-size: 15px; line-height: 1.8; color: var(--light); text-align: justify; hyphens: none; -webkit-hyphens: none; overflow-wrap: break-word; word-break: normal; }
 
     /* ── FUNDADOR ─────────────────────────────── */
     .fundador-grid {
@@ -141,9 +141,10 @@
     }
     .fundador-role { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 8px; }
     .fundador-bio { min-width: 0; }
-    .fundador-bio p { font-size: 16px; line-height: 1.85; color: var(--light); text-align: justify; hyphens: auto; overflow-wrap: break-word; }
+    .fundador-bio p { font-size: 16px; line-height: 1.85; color: var(--light); text-align: justify; hyphens: none; -webkit-hyphens: none; overflow-wrap: break-word; word-break: normal; }
     .fundador-bio p + p { margin-top: 22px; }
-    .fundador-creds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 36px; }
+    .fundador-creds { display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 36px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+    .fundador-creds::-webkit-scrollbar { display: none; }
     .cred-tag {
       font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--gray);

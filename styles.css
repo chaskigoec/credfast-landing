@@ -20,6 +20,16 @@
 /* ─── BASE ─── */
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+/* Texto justificado sin corte de palabras en todo el sitio */
+p, li, blockquote, figcaption, dd, dt, label, span:not([class*="badge"]):not([class*="tag"]):not([class*="chip"]) {
+  text-align: justify;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
 .logo-img { display: block; }
 
 /* ─── ACCESIBILIDAD ─── */
